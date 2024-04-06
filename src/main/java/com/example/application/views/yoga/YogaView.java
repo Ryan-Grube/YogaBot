@@ -1,11 +1,13 @@
 package com.example.application.views.yoga;
 
 import com.example.application.views.MainLayout;
+import com.example.application.views.myposes.MyPosesView;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
@@ -13,9 +15,11 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Yoga")
 @Route(value = "my-Yoga", layout = MainLayout.class)
@@ -26,14 +30,20 @@ public class YogaView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow = new HorizontalLayout();
         H2 h2 = new H2();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
-        VerticalLayout layoutColumn2 = new VerticalLayout();
+        VerticalLayout layoutColumn2 = new VerticalLayout();//left text col
         Paragraph textSmall = new Paragraph();
         VerticalLayout layoutColumn5 = new VerticalLayout();
-        VerticalLayout layoutColumn3 = new VerticalLayout();
+        VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
+        Image cameraTest = new Image("/images/CameraTest.png","CameraTest");
+
         VerticalLayout layoutColumn6 = new VerticalLayout();
         VerticalLayout layoutColumn4 = new VerticalLayout();
         Button buttonPrimary = new Button();
         HorizontalLayout layoutRow3 = new HorizontalLayout();
+
+        cameraTest.setWidth(layoutColumn5.getWidth());
+        cameraTest.setHeight(layoutColumn5.getHeight());
+        layoutColumn5.add(cameraTest);
         Button buttonPrimary2 = new Button();
         Button buttonPrimary3 = new Button();
         Button buttonPrimary4 = new Button();
@@ -55,7 +65,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutColumn2.setWidth("200px");
         layoutColumn2.setHeight("151px");
         textSmall.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
         textSmall.setWidth("100%");
         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         layoutColumn5.setWidth("474px");
@@ -100,7 +110,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow2.add(layoutColumn3);
         layoutColumn3.add(layoutColumn6);
         layoutColumn3.add(layoutColumn4);
-        layoutColumn4.add(buttonPrimary);
+        layoutColumn4.add(new SideNavItem("More Poses", MyPosesView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
         layoutColumn3.add(layoutRow3);
         layoutRow3.add(buttonPrimary2);
         layoutRow3.add(buttonPrimary3);

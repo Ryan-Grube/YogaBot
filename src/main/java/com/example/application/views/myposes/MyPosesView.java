@@ -3,12 +3,14 @@ package com.example.application.views.myposes;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.dependency.Uses;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+
 
 @PageTitle("My Poses")
 @Route(value = "my-Poses", layout = MainLayout.class)
@@ -39,5 +41,9 @@ public class MyPosesView extends Composite<VerticalLayout> {
         getContent().add(layoutRow);
         getContent().add(layoutRow2);
         getContent().add(layoutRow3);
+        Image yogaMan = new Image("images/yogaMan.png","oh No");
+        Image yogaMan2 = new Image("images/yogaMan.png","oh No");
+        layoutRow.add(yogaMan);
+        layoutRow.add(yogaMan2);
     }
 }
