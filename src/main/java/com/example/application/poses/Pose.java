@@ -2,7 +2,8 @@ package com.example.application.poses;
 
 public class Pose {
 
-    String img;
+    private String img;
+    private double[] actualAngles = new double[10];
     private double lArmAngle;
     private double rArmAngle;
     private double lShoulderAngle;
@@ -15,63 +16,75 @@ public class Pose {
     private double rFootAngle;
 
     //order is: arm, shoulder, hip, leg, foot
-    public Pose(String img, double lArmAngle, double rArmAngle, double lShoulderAngle, double rShoulderAngle,
+    public Pose(String img, double lArmAngle, double rArmAngle, double lArmpitAngle, double rArmpitAngle,
                 double lHipAngle, double rHipAngle, double lLegAngle, double rLegAngle, double lFootAngle, double rFootAngle) {
         this.img = img;
 
         this.lArmAngle = lArmAngle;
         this.rArmAngle = rArmAngle;
-        this.lShoulderAngle = lShoulderAngle;
-        this.rShoulderAngle = rShoulderAngle;
+        this.lShoulderAngle = lArmpitAngle;
+        this.rShoulderAngle = rArmpitAngle;
         this.lHipAngle = lHipAngle;
         this.rHipAngle = rHipAngle;
         this.lLegAngle = lLegAngle;
         this.rLegAngle = rLegAngle;
         this.lFootAngle = lFootAngle;
         this.rFootAngle = rFootAngle;
+
+        this.actualAngles[0] = rArmAngle;
+        this.actualAngles[1] = lArmAngle;
+        this.actualAngles[2] = rLegAngle;
+        this.actualAngles[3] = lLegAngle;
+        this.actualAngles[4] = rFootAngle;
+        this.actualAngles[5] = lFootAngle;
+        this.actualAngles[6] = rHipAngle;
+        this.actualAngles[7] = lHipAngle;
+        this.actualAngles[8] = rArmpitAngle;
+        this.actualAngles[9] = lArmpitAngle;
+
     }
 
     public String getImg() {
         return img;
     }
 
-    public double getLArmAngle() {
+    public double getLeftArmAngle() {
         return lArmAngle;
     }
 
-    public double getRArmAngle() {
+    public double getRightArmAngle() {
         return rArmAngle;
     }
 
-    public double getLShoulderAngle() {
+    public double getLeftShoulderAngle() {
         return lShoulderAngle;
     }
 
-    public double getRShoulderAngle() {
+    public double getRightShoulderAngle() {
         return rShoulderAngle;
     }
 
-    public double getLHipAngle() {
+    public double getLeftHipAngle() {
         return lHipAngle;
     }
 
-    public double getRHipAngle() {
+    public double getRightHipAngle() {
         return rHipAngle;
     }
 
-    public double getLLegAngle() {
+    public double getLeftLegAngle() {
         return lLegAngle;
     }
 
-    public double getRLegAngle() {
+    public double getRightLegAngle() {
         return rLegAngle;
     }
 
-    public double getLFootAngle() {
+    public double getLeftFootAngle() {
         return lFootAngle;
     }
 
-    public double getRFootAngle() {
+    public double getRightFootAngle() {
         return rFootAngle;
     }
 }
