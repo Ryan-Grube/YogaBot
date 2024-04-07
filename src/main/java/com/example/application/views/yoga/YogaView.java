@@ -1,5 +1,6 @@
 package com.example.application.views.yoga;
 
+import com.example.application.Calculations;
 import com.example.application.poses.Pose;
 import com.example.application.vcamera.VCamera;
 import com.example.application.views.MainLayout;
@@ -78,8 +79,13 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow2.setFlexGrow(1.0, layoutColumn2);
         layoutColumn2.setWidthFull();
         layoutColumn2.setHeight("500px");
-        textSmall.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
+        String msg = "";
+        if(Calculations.getEs()!=null){
+            for(int i =0; i<Calculations.getEs().getError().length; i++ ){
+                msg += Calculations.getEs().getError()[i].getErrorMessage();
+            }
+        }
+        textSmall.setText(msg);
         textSmall.setWidth("100%");
         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         //layoutColumn5.setWidth("474px");
@@ -165,6 +171,9 @@ public class YogaView extends Composite<VerticalLayout> {
 
     public static void setPose(Pose pose2){
         pose = pose2;
+    }
+    public static Pose getPose() {
+        return pose;
     }
 }
 
