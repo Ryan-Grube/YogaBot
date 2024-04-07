@@ -30,6 +30,8 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
     private static String toFix;
+    private static Paragraph message = new Paragraph("");
+
 
     public YogaView() {
 
@@ -41,7 +43,7 @@ public class YogaView extends Composite<VerticalLayout> {
         VerticalLayout layoutColumn2 = new VerticalLayout();//left text col
 
 
-        Paragraph textSmall = new Paragraph();
+
         VerticalLayout layoutColumn5 = new VerticalLayout();
         layoutColumn5.setSizeUndefined();
         VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
@@ -85,9 +87,9 @@ public class YogaView extends Composite<VerticalLayout> {
                 msg += Calculations.getEs().getError()[i].getErrorMessage();
             }
         }
-        textSmall.setText(msg);
-        textSmall.setWidth("100%");
-        textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+        message.setText(msg);
+        message.setWidth("100%");
+        message.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         //layoutColumn5.setWidth("474px");
         //layoutColumn5.setHeight("344px");
 
@@ -127,7 +129,9 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow.add(h2);
         getContent().add(layoutRow2);
         layoutRow2.add(layoutColumn2);
-        layoutColumn2.add(textSmall);
+        layoutColumn2.add(message);
+
+
         layoutRow2.add(layoutColumn5);
         layoutRow2.add(layoutColumn3);
         layoutColumn3.add(layoutColumn6);
@@ -174,6 +178,9 @@ public class YogaView extends Composite<VerticalLayout> {
     }
     public static Pose getPose() {
         return pose;
+    }
+    public static void setMessage(String msg){
+        message.setText(msg);
     }
 }
 
