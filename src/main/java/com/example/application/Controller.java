@@ -1,5 +1,7 @@
 package com.example.application;
 
+import com.example.application.angles.CalculateAngles;
+import com.example.application.angles.Comparison;
 import com.example.application.poses.PoseSet;
 import org.springframework.web.bind.annotation.*;
 
