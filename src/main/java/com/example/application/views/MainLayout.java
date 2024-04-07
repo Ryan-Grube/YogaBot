@@ -1,5 +1,6 @@
 package com.example.application.views;
 
+import com.example.application.views.dashboard.DashboardView;
 import com.example.application.views.info.InfoView;
 import com.example.application.views.myposes.MyPosesView;
 import com.example.application.views.yoga.YogaView;
@@ -40,7 +41,7 @@ public class MainLayout extends AppLayout {
     }
 
     private void addDrawerContent() {
-        H1 appName = new H1("My App");
+        H1 appName = new H1("Yoga Bot");
         appName.addClassNames(LumoUtility.FontSize.LARGE, LumoUtility.Margin.NONE);
         Header header = new Header(appName);
 
@@ -49,13 +50,11 @@ public class MainLayout extends AppLayout {
         addToDrawer(header, scroller, createFooter());
     }
 
-    private SideNavItem MyPoses;
-
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
+        nav.addItem((new SideNavItem("Dashboard", DashboardView.class,LineAwesomeIcon.STAR.create())));
         nav.addItem(new SideNavItem("Info", InfoView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
         nav.addItem( new SideNavItem("My Poses", MyPosesView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-
         nav.addItem(new SideNavItem("Yoga", YogaView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
         return nav;
     }

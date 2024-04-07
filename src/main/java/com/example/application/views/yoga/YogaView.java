@@ -32,13 +32,17 @@ public class YogaView extends Composite<VerticalLayout> {
 
 
         HorizontalLayout layoutRow = new HorizontalLayout();
+        layoutRow.setWidthFull();
         H2 h2 = new H2();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
         VerticalLayout layoutColumn2 = new VerticalLayout();//left text col
+
+
         Paragraph textSmall = new Paragraph();
         VerticalLayout layoutColumn5 = new VerticalLayout();
+        layoutColumn5.setSizeUndefined();
         VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
-        Image cameraTest = new Image("/images/CameraTest.png", "CameraTest");
+
         VerticalLayout layoutColumn6 = new VerticalLayout();
 
 
@@ -53,11 +57,14 @@ public class YogaView extends Composite<VerticalLayout> {
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         layoutRow.addClassName(Gap.MEDIUM);
-        layoutRow.setWidth("1014px");
         layoutRow.setHeight("min-content");
         layoutRow.setAlignItems(Alignment.CENTER);
         layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
-        h2.setText("Heading");
+
+        if(pose!=null){
+            //h2.setText(pose.);
+        }
+        h2.setText("pose title");
         layoutRow.setAlignSelf(FlexComponent.Alignment.CENTER, h2);
         h2.setWidth("max-content");
         layoutRow2.addClassName(Gap.MEDIUM);
@@ -65,8 +72,8 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow2.getStyle().set("flex-grow", "1");
         layoutColumn2.setHeightFull();
         layoutRow2.setFlexGrow(1.0, layoutColumn2);
-        layoutColumn2.setWidth("200px");
-        layoutColumn2.setHeight("151px");
+        layoutColumn2.setWidthFull();
+        layoutColumn2.setHeight("500px");
         textSmall.setText(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
         textSmall.setWidth("100%");
@@ -75,15 +82,15 @@ public class YogaView extends Composite<VerticalLayout> {
         //layoutColumn5.setHeight("344px");
 
         layoutColumn3.setWidth("320px");
-        layoutColumn3.setHeight("344px");
+        layoutColumn3.setHeightFull();
         layoutColumn6.setWidth("300px");
         layoutColumn6.setHeight("200px");
         layoutColumn4.setWidthFull();
         layoutColumn3.setFlexGrow(1.0, layoutColumn4);
         layoutColumn4.setWidth("100%");
-        layoutColumn4.setHeight("30px");
+        layoutColumn4.setHeight("50px");
         layoutColumn4.setJustifyContentMode(JustifyContentMode.CENTER);
-        layoutColumn4.setAlignItems(Alignment.CENTER);
+        layoutColumn4.setAlignItems(Alignment.BASELINE);
         buttonPrimary.setText("More Yoga");
         layoutColumn4.setAlignSelf(FlexComponent.Alignment.CENTER, buttonPrimary);
         buttonPrimary.setWidth("min-content");
@@ -115,6 +122,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutColumn3.add(layoutColumn6);
         layoutColumn3.add(layoutColumn4);
         layoutColumn4.add(new SideNavItem("More Poses", MyPosesView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        layoutColumn4.setAlignItems(Alignment.CENTER);
         layoutColumn3.add(layoutRow3);
         layoutRow3.add(buttonPrimary2);
         layoutRow3.add(buttonPrimary3);
@@ -124,8 +132,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutColumn5.setHeightFull();
         layoutColumn3.setHeightFull();
 
-        cameraTest.setWidth(layoutColumn5.getWidth());
-        cameraTest.setHeight(layoutColumn5.getHeight());
+
         VCamera camera = new VCamera();
         camera.openCamera();
         layoutColumn5.add(camera);
