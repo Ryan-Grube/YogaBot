@@ -1,7 +1,11 @@
 package com.example.application.views.myposes;
 
 import com.example.application.views.MainLayout;
+import com.example.application.views.yoga.YogaView;
+import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
@@ -9,8 +13,10 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 
+import static com.example.application.views.yoga.YogaView.setPose;
 
 @PageTitle("My Poses")
 @Route(value = "my-Poses", layout = MainLayout.class)
@@ -43,7 +49,30 @@ public class MyPosesView extends Composite<VerticalLayout> {
         getContent().add(layoutRow3);
         Image yogaMan = new Image("images/yogaMan.png","oh No");
         Image yogaMan2 = new Image("images/yogaMan.png","oh No");
-        layoutRow.add(yogaMan);
+
         layoutRow.add(yogaMan2);
+        RouterLink link = new RouterLink("", YogaView.class);
+        yogaMan.addClickListener(event ->
+                {
+                    link.getElement().executeJs("this.click()");
+                    //add setPose(PoseSet.getTree()...);
+                }
+                );
+        link.add(yogaMan);
+        layoutRow.add(link);
+
+        RouterLink link2 = new RouterLink("Tree Pose", YogaView.class);
+        yogaMan.addClickListener(event ->
+                {
+                    link2.getElement().executeJs("this.click()");
+                    //add setPose(PoseSet.getTree()...);
+                }
+        );
+        Image treePose = new Image("/images/treePose.png","Tree Pose not found");
+        link.add(yogaMan);
+        layoutRow.add(link);
+
+
+
     }
 }
