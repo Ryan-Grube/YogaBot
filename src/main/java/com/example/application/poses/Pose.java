@@ -6,6 +6,7 @@ public class Pose {
     private double[] actualAngles = new double[10];
     private double lArmAngle;
     private double rArmAngle;
+
     private double lShoulderAngle;
     private double rShoulderAngle;
     private double lHipAngle;
@@ -42,6 +43,10 @@ public class Pose {
         this.actualAngles[8] = rArmpitAngle;
         this.actualAngles[9] = lArmpitAngle;
 
+    }
+
+    public double[] getActualAngles() {
+        return actualAngles;
     }
 
     public String getImg() {

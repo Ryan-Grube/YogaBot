@@ -26,6 +26,12 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 @Uses(Icon.class)
 public class YogaView extends Composite<VerticalLayout> {
 
+//    public static void setCamPng(String camPng) {
+//        YogaView.camPng = camPng;
+//    }
+//
+//    private static String camPng;
+
     public YogaView() {
         HorizontalLayout layoutRow = new HorizontalLayout();
         H2 h2 = new H2();
@@ -34,7 +40,7 @@ public class YogaView extends Composite<VerticalLayout> {
         Paragraph textSmall = new Paragraph();
         VerticalLayout layoutColumn5 = new VerticalLayout();
         VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
-        Image cameraTest = new Image("/images/CameraTest.png","CameraTest");
+        Image cameraTest = new Image("/images/webcam.png","WebCam");
 
         VerticalLayout layoutColumn6 = new VerticalLayout();
         VerticalLayout layoutColumn4 = new VerticalLayout();
@@ -116,4 +122,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow3.add(buttonPrimary3);
         layoutRow3.add(buttonPrimary4);
     }
+//    public static void setCamPng(String filePath) {
+//        camPng = filePath;
+//    }
 }

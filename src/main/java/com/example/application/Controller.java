@@ -2,6 +2,7 @@ package com.example.application;
 
 import com.example.application.angles.CalculateAngles;
 import com.example.application.angles.Comparison;
+import com.example.application.poses.Pose;
 import com.example.application.poses.PoseSet;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,14 +33,21 @@ public class Controller {
     @GetMapping("/angles")
     public String getAngles() {
         String s = "";
-        Comparison c;
-        for (double[] dlist : CalculateAngles.getLandmarkPoints()) {
-            for (double d : dlist) {
-                c = new Comparison(d, PoseSet.getTree().getLeftArmAngle(), 10); //class.default
-                s+=c.compareAngles()+" ";
-            }
+        CalculateAngles.setAngles();
+        for (int i = 0; i < 10; i++) {
+            s += CalculateAngles.getAngles()[i] + "\n";
         }
 
+        return s;
+    }
+
+    @GetMapping("/angle_differences")
+    public String getAngleDifferences() {
+        String s = "";
+        Pose pCurrent = PoseSet.getTree();
+        for (int i = 0; i < 10; i++) {
+            s += CalculateAngles.getAngles()[i] - pCurrent.getActualAngles()[i] + "\n";
+        }
         return s;
     }
 
