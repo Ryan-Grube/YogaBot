@@ -18,7 +18,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.swing.*;
 
@@ -65,15 +65,20 @@ public class MyPosesView extends Composite<VerticalLayout> {
         makeClickableImage("/images/catPose.png",PoseSet.getCatPose(),layoutRow);
         makeClickableImage("/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
         makeClickableImage("/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
-        makeClickableImage("/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
+        makeClickableImage("/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow);
         makeClickableImage("/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
-        makeClickableImage("/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
+        makeClickableImage("/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow2);
         makeClickableImage("/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
-
-
+        makeClickableImage("/images/plankPose.png",PoseSet.getPlankPose(),layoutRow2);
+        makeClickableImage("/images/seatedForwardBend.png",PoseSet.getSeatedForwardBend(),layoutRow2);
+        makeClickableImage("/images/sittingPose.png",PoseSet.getSittingPose(),layoutRow3);
+        makeClickableImage("/images/treePose.png",PoseSet.getTreePose(),layoutRow3);
+        makeClickableImage("/images/trianglePose.png",PoseSet.getTrianglePose(),layoutRow3);
+        makeClickableImage("/images/warrior1.png",PoseSet.getWarrior1(),layoutRow3);
+        makeClickableImage("/images/warrior2.png",PoseSet.getWarrior2(),layoutRow3);
 
     }
-    public void makeClickableImage(String img, Pose pose, @NotNull HorizontalLayout layout){
+    public void makeClickableImage(String img, Pose pose, HorizontalLayout layout){
         VerticalLayout vert = new VerticalLayout();
         layout.add(vert);
         RouterLink link2 = new RouterLink("", YogaView.class);

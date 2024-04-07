@@ -26,7 +26,6 @@ public class Pose {
 
         this.poseName = poseName;
         this.isReversed = isReversed;
-        if(!isReversed) {
             this.img = img;
             this.lArmAngle = lArmAngle;
             this.rArmAngle = rArmAngle;
@@ -38,19 +37,8 @@ public class Pose {
             this.rLegAngle = rLegAngle;
             this.lFootAngle = lFootAngle;
             this.rFootAngle = rFootAngle;
-        }
-        else{
-            this.img = img.substring(0,img.length()-4)+"Reversed.png";
-            this.lArmAngle = rArmAngle;
-            this.rArmAngle = lArmAngle;
-            this.lShoulderAngle = rArmpitAngle;
-            this.rShoulderAngle = lArmpitAngle;
-            this.lHipAngle = rHipAngle;
-            this.rHipAngle = lHipAngle;
-            this.lLegAngle = rLegAngle;
-            this.rLegAngle = lLegAngle;
-            this.lFootAngle = rFootAngle;
-            this.rFootAngle = lFootAngle;
+        if(isReversed){
+            reverse();
         }
 
         this.actualAngles[0] = rArmAngle;
@@ -147,4 +135,24 @@ public class Pose {
     public double getRightFootAngle() {
         return rFootAngle;
     }
+
+    public void reverse(){
+        if(img.substring(img.length()-8,img.length()).equals(" (1).png")){
+            img = img.substring(0,img.length()-8)+".png";
+        }
+        else{
+            this.img = img.substring(0,img.length()-4)+" (1).png";
+        }
+        this.lArmAngle = rArmAngle;
+        this.rArmAngle = lArmAngle;
+        this.lShoulderAngle = rShoulderAngle;
+        this.rShoulderAngle = lShoulderAngle;
+        this.lHipAngle = rHipAngle;
+        this.rHipAngle = lHipAngle;
+        this.lLegAngle = rLegAngle;
+        this.rLegAngle = lLegAngle;
+        this.lFootAngle = rFootAngle;
+        this.rFootAngle = lFootAngle;
+    }
+
 }

@@ -104,7 +104,8 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow3.setHeight("74px");
         layoutRow3.setAlignItems(Alignment.CENTER);
         layoutRow3.setJustifyContentMode(JustifyContentMode.CENTER);
-        buttonPrimary2.setText("Previous");
+        buttonPrimary2.setText("Flip");
+
         buttonPrimary2.setWidth("min-content");
         buttonPrimary2.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         buttonPrimary3.setText("Start");
@@ -149,6 +150,8 @@ public class YogaView extends Composite<VerticalLayout> {
         correctPoseImg.setWidth(layoutColumn6.getWidth());
 
         layoutColumn6.add(correctPoseImg);
+        buttonPrimary2.addClickListener(event-> {pose.reverse();
+                            getElement().executeJs("window.location.reload()");} );
 
 
 

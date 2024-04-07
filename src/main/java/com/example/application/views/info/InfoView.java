@@ -11,7 +11,7 @@ import com.vaadin.flow.router.RouteAlias;
 
 @PageTitle("Info")
 @Route(value = "my-view", layout = MainLayout.class)
-@RouteAlias(value = "", layout = MainLayout.class)
+
 @Uses(Icon.class)
 public class InfoView extends Composite<VerticalLayout> {
 
