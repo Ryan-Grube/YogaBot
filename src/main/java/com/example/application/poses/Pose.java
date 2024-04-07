@@ -4,6 +4,7 @@ public class Pose {
 
     private String img;
     private double[] actualAngles = new double[10];
+    private double[] thresholds = new double[10];
     private double lArmAngle;
     private double rArmAngle;
 
@@ -47,6 +48,32 @@ public class Pose {
 
     public double[] getActualAngles() {
         return actualAngles;
+    }
+
+    public double[] getThresholds() {
+        return thresholds;
+    }
+
+    public void setThresholds(double t1,
+                              double t2,
+                              double t3,
+                              double t4,
+                              double t5,
+                              double t6,
+                              double t7,
+                              double t8,
+                              double t9,
+                              double t10) {
+        thresholds[0] = t1;
+        thresholds[1] = t2;
+        thresholds[2] = t3;
+        thresholds[3] = t4;
+        thresholds[4] = t5;
+        thresholds[5] = t6;
+        thresholds[6] = t7;
+        thresholds[7] = t8;
+        thresholds[8] = t9;
+        thresholds[9] = t10;
     }
 
     public String getImg() {

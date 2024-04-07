@@ -44,9 +44,21 @@ public class Controller {
     @GetMapping("/angle_differences")
     public String getAngleDifferences() {
         String s = "";
-        Pose pCurrent = PoseSet.getTree();
+        Pose pCurrent = PoseSet.getTreePose();
+        CalculateAngles.setAngles();
         for (int i = 0; i < 10; i++) {
-            s += CalculateAngles.getAngles()[i] - pCurrent.getActualAngles()[i] + "\n";
+            s += Comparison.compareAngles(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]) + "\n";
+        }
+        return s;
+    }
+
+    @GetMapping("/meets_thresholds")
+    public String getMeetsThresholds() {
+        String s = "";
+        Pose pCurrent = PoseSet.getTreePose();
+        CalculateAngles.setAngles();
+        for (int i = 0; i < 10; i++) {
+            s += Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i]) + "\n";
         }
         return s;
     }

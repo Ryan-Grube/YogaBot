@@ -17,7 +17,22 @@ public class PoseSet {
     private static Pose childsPose = new Pose("/images/childsPose.png", 180.0, 180.0, 160.0, 160.0, 20.0, 20.0, 30.0, 30.0, -1.0, -1.0);
     private static Pose sittingPose = new Pose("/images/sittingPose.png", 160.0, 160.0, -1.0, -1.0, 90.0, 90.0, 10.0, 10.0, -1.0, -1.0);
 
-    public PoseSet() {}
+    public PoseSet() {
+        treePose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        warrior2.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        downwardDog.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        bridgePose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        seatedForwardBend.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        plankPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        camelPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        warrior1.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        cowPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        catPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        trianglePose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        extendedSideAnglePose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        childsPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+        sittingPose.setThresholds(50, 50, 50, 50, 50, 50, 50, 50, 50, 50);
+    }
 
     public static Pose getTreePose() {
         return treePose;

@@ -1,22 +1,14 @@
 package com.example.application.angles;
 
 public class Comparison {
-    private double yourAngle;
-    private double actualAngle;
-    private double threshold;
+    public Comparison () {}
 
-    public Comparison (double yourAngle, double actualAngle, double threshold) {
-        this.yourAngle = yourAngle;
-        this.actualAngle = actualAngle;
-        this.threshold = threshold;
+    public static double compareAngles (double yourAngle, double actualAngle) {
+        return actualAngle - yourAngle;
     }
 
-    public double compareAngles () {
-        return this.actualAngle - this.yourAngle;
-    }
-
-    public boolean meetsThreshold() {
-        if (compareAngles() <= this.threshold) {
+    public static boolean meetsThreshold(double yourAngle, double actualAngle, double threshold) {
+        if (compareAngles(yourAngle, actualAngle) <= threshold) {
             return true;
         }
         return false;
