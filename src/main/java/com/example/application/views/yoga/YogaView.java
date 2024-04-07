@@ -1,5 +1,6 @@
 package com.example.application.views.yoga;
 
+import com.example.application.Calculations;
 import com.example.application.poses.Pose;
 import com.example.application.vcamera.VCamera;
 import com.example.application.views.MainLayout;
@@ -28,6 +29,10 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 @Uses(Icon.class)
 public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
+    private static String toFix;
+    private static Paragraph message = new Paragraph("");
+
+
     public YogaView() {
 
 
@@ -38,7 +43,7 @@ public class YogaView extends Composite<VerticalLayout> {
         VerticalLayout layoutColumn2 = new VerticalLayout();//left text col
 
 
-        Paragraph textSmall = new Paragraph();
+
         VerticalLayout layoutColumn5 = new VerticalLayout();
         layoutColumn5.setSizeUndefined();
         VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
@@ -76,10 +81,15 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow2.setFlexGrow(1.0, layoutColumn2);
         layoutColumn2.setWidthFull();
         layoutColumn2.setHeight("500px");
-        textSmall.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
-        textSmall.setWidth("100%");
-        textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+        String msg = "";
+        if(Calculations.getEs()!=null){
+            for(int i =0; i<Calculations.getEs().getError().length; i++ ){
+                msg += Calculations.getEs().getError()[i].getErrorMessage();
+            }
+        }
+        message.setText(msg);
+        message.setWidth("100%");
+        message.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         //layoutColumn5.setWidth("474px");
         //layoutColumn5.setHeight("344px");
 
@@ -119,7 +129,9 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow.add(h2);
         getContent().add(layoutRow2);
         layoutRow2.add(layoutColumn2);
-        layoutColumn2.add(textSmall);
+        layoutColumn2.add(message);
+
+
         layoutRow2.add(layoutColumn5);
         layoutRow2.add(layoutColumn3);
         layoutColumn3.add(layoutColumn6);
@@ -157,11 +169,18 @@ public class YogaView extends Composite<VerticalLayout> {
 
     }
 
-    public static Pose getPose() {
-        return pose;
+    public static void addToFix(String append){
+        toFix += append;
     }
 
     public static void setPose(Pose pose2){
         pose = pose2;
     }
+    public static Pose getPose() {
+        return pose;
+    }
+    public static void setMessage(String msg){
+        message.setText(msg);
+    }
 }
+

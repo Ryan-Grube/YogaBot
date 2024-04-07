@@ -34,6 +34,8 @@ public class DashboardView extends Composite<VerticalLayout> {
         RouterLink link1 = new RouterLink("", MyPosesView.class);
         button1.addClickListener(event->Notification.show("Here are some Yoga poses!\n Click on one and it will " +
                 "take you to the Yoga player!") );
+        button1.setSizeFull();
+        vert1.setSizeFull();
         link1.add(button1);
         vert1.add(link1);
         Image lemogus = new Image("/images/CameraTest.png","Oh No");

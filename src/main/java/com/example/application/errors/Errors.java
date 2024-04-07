@@ -8,4 +8,7 @@ public class Errors {
     public void addError(int index, SingleError e) {
         errors[index] = e;
     }
+    public SingleError[] getError(){
+        return errors;
+    }
 }

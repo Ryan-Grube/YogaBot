@@ -53,9 +53,9 @@ public class MainLayout extends AppLayout {
     private SideNav createNavigation() {
         SideNav nav = new SideNav();
         nav.addItem((new SideNavItem("Dashboard", DashboardView.class,LineAwesomeIcon.STAR.create())));
-        nav.addItem(new SideNavItem("Info", InfoView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-        nav.addItem( new SideNavItem("My Poses", MyPosesView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-        nav.addItem(new SideNavItem("Yoga", YogaView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //nav.addItem(new SideNavItem("Info", InfoView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        nav.addItem( new SideNavItem("My Poses", MyPosesView.class, LineAwesomeIcon.HEART.create()));
+        nav.addItem(new SideNavItem("Yoga", YogaView.class, LineAwesomeIcon.PEACE_SOLID.create()));
         return nav;
     }
 
