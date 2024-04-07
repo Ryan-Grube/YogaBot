@@ -133,12 +133,17 @@ public class YogaView extends Composite<VerticalLayout> {
         else {
             correctPoseImg = new Image(pose.getImg(),"Oh No");
         }
+        correctPoseImg.setHeight(layoutColumn6.getHeight());
+        correctPoseImg.setWidth(layoutColumn6.getWidth());
 
         layoutColumn6.add(correctPoseImg);
 
 
 
     }
+
+
+
     public static void setPose(Pose pose2){
         pose = pose2;
     }
