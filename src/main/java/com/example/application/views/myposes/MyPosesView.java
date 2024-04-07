@@ -60,5 +60,19 @@ public class MyPosesView extends Composite<VerticalLayout> {
                 );
         link.add(yogaMan);
         layoutRow.add(link);
+
+        RouterLink link2 = new RouterLink("Tree Pose", YogaView.class);
+        yogaMan.addClickListener(event ->
+                {
+                    link2.getElement().executeJs("this.click()");
+                    //add setPose(PoseSet.getTree()...);
+                }
+        );
+        Image treePose = new Image("/images/treePose.png","Tree Pose not found");
+        link.add(yogaMan);
+        layoutRow.add(link);
+
+
+
     }
 }
