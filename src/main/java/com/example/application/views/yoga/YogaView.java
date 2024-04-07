@@ -157,7 +157,9 @@ public class YogaView extends Composite<VerticalLayout> {
 
     }
 
-
+    public static Pose getPose() {
+        return pose;
+    }
 
     public static void setPose(Pose pose2){
         pose = pose2;
