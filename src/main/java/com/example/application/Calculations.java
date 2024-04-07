@@ -10,8 +10,8 @@ import com.example.application.views.yoga.YogaView;
 
 public class Calculations {
 
-    private Errors es;
-    private double[] differences = new double[10];
+    private static Errors es;
+    private static double[] differences = new double[10];
     public Calculations() {}
 
 //    public void showNumbericData() {
@@ -23,14 +23,14 @@ public class Calculations {
 //        }
 //    }
 
-    public void getAngles() {
+    public static void getAngles() {
         CalculateAngles.setAngles();
         for (int i = 0; i < 10; i++) {
             System.out.println(CalculateAngles.getAngles()[i]);
         }
     }
 
-    public void getAngleDifferences() {
+    public static void getAngleDifferences() {
         Pose pCurrent = YogaView.getPose();
         CalculateAngles.setAngles();
         for (int i = 0; i < 10; i++) {
@@ -38,7 +38,7 @@ public class Calculations {
         }
     }
 
-    public void getMeetsThresholds() {
+    public static void getMeetsThresholds() {
         Pose pCurrent = YogaView.getPose();
         CalculateAngles.setAngles();
         boolean meets;
@@ -49,7 +49,7 @@ public class Calculations {
         }
     }
 
-    public void getErrorMessages() {
+    public static void getErrorMessages() {
         Pose pCurrent = YogaView.getPose();
         CalculateAngles.setAngles();
 
@@ -73,11 +73,11 @@ public class Calculations {
         }
     }
 
-    public Errors getEs() {
+    public static Errors getEs() {
         return es;
     }
 
-    public double[] getDifferences() {
+    public static double[] getDifferences() {
         return differences;
     }
 }
