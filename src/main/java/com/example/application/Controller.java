@@ -35,7 +35,7 @@ public class Controller {
         Comparison c;
         for (double[] dlist : CalculateAngles.getLandmarkPoints()) {
             for (double d : dlist) {
-                c = new Comparison(d, PoseSet.getTree().getLeftArmAngle(), 10); //class.default
+                c = new Comparison(d, PoseSet.getTreePose().getLeftArmAngle(), 10); //class.default
                 s+=c.compareAngles()+" ";
             }
         }

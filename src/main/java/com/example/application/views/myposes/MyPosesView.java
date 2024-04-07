@@ -1,5 +1,7 @@
 package com.example.application.views.myposes;
 
+import com.example.application.poses.Pose;
+import com.example.application.poses.PoseSet;
 import com.example.application.views.MainLayout;
 import com.example.application.views.yoga.YogaView;
 import com.vaadin.flow.component.ClickEvent;
@@ -27,6 +29,11 @@ public class MyPosesView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow = new HorizontalLayout();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
         HorizontalLayout layoutRow3 = new HorizontalLayout();
+
+        layoutRow.setHeight("150px");
+        layoutRow2.setHeight("150px");
+
+
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         layoutRow.setWidthFull();
@@ -47,32 +54,33 @@ public class MyPosesView extends Composite<VerticalLayout> {
         getContent().add(layoutRow);
         getContent().add(layoutRow2);
         getContent().add(layoutRow3);
-        Image yogaMan = new Image("images/yogaMan.png","oh No");
-        Image yogaMan2 = new Image("images/yogaMan.png","oh No");
 
-        layoutRow.add(yogaMan2);
-        RouterLink link = new RouterLink("", YogaView.class);
-        yogaMan.addClickListener(event ->
-                {
-                    link.getElement().executeJs("this.click()");
-                    //add setPose(PoseSet.getTree()...);
-                }
-                );
-        link.add(yogaMan);
-        layoutRow.add(link);
+        makeClickableImage("/images/bridgePose.png",PoseSet.getBridgePose(),layoutRow);
+        makeClickableImage("/images/catPose.png",PoseSet.getCatPose(),layoutRow);
+        makeClickableImage("/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
+        makeClickableImage("/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
+        makeClickableImage("/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
+        makeClickableImage("/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
+        makeClickableImage("/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
+        makeClickableImage("/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
 
-        RouterLink link2 = new RouterLink("Tree Pose", YogaView.class);
-        yogaMan.addClickListener(event ->
+
+
+    }
+    public void makeClickableImage(String img, Pose pose,HorizontalLayout layout){
+        RouterLink link2 = new RouterLink("", YogaView.class);
+        Image myImage = new Image(img,"image not working");
+        myImage.setHeight("150px");
+        myImage.setWidth("250px");
+        myImage.addClickListener(event ->
                 {
                     link2.getElement().executeJs("this.click()");
-                    //add setPose(PoseSet.getTree()...);
+                    setPose(pose);
                 }
         );
-        Image treePose = new Image("/images/treePose.png","Tree Pose not found");
-        link.add(yogaMan);
-        layoutRow.add(link);
 
-
+        link2.add(myImage);
+        layout.add(link2);
 
     }
 }
