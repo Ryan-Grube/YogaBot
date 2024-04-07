@@ -1,7 +1,7 @@
 package com.example.application.errors;
 
 public class Errors {
-    SingleError[] errors;
+    private SingleError[] errors;
     public Errors(int num) {
         errors = new SingleError[num];
     }
