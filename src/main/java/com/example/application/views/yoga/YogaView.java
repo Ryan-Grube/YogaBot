@@ -28,6 +28,8 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 @Uses(Icon.class)
 public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
+    private static String toFix;
+
     public YogaView() {
 
 
@@ -157,9 +159,12 @@ public class YogaView extends Composite<VerticalLayout> {
 
     }
 
-
+    public static void addToFix(String append){
+        toFix += append;
+    }
 
     public static void setPose(Pose pose2){
         pose = pose2;
     }
 }
+
