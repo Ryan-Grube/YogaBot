@@ -8,7 +8,7 @@ public class Comparison {
     }
 
     public static boolean meetsThreshold(double yourAngle, double actualAngle, double threshold) {
-        if (compareAngles(yourAngle, actualAngle) <= threshold) {
+        if (Math.abs(compareAngles(yourAngle, actualAngle)) <= threshold) {
             return true;
         }
         return false;
