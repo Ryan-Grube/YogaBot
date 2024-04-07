@@ -3,6 +3,7 @@ package com.example.application.poses;
 public class Pose {
 
     private String img;
+    private String poseName;
     private double[] actualAngles = new double[10];
     private double[] thresholds = new double[10];
     private double lArmAngle;
@@ -18,9 +19,10 @@ public class Pose {
     private double rFootAngle;
 
     //order is: arm, shoulder, hip, leg, foot
-    public Pose(String img, double lArmAngle, double rArmAngle, double lArmpitAngle, double rArmpitAngle,
+    public Pose(String img, String poseName, double lArmAngle, double rArmAngle, double lArmpitAngle, double rArmpitAngle,
                 double lHipAngle, double rHipAngle, double lLegAngle, double rLegAngle, double lFootAngle, double rFootAngle) {
         this.img = img;
+        this.poseName = poseName;
 
         this.lArmAngle = lArmAngle;
         this.rArmAngle = rArmAngle;
@@ -78,6 +80,10 @@ public class Pose {
 
     public String getImg() {
         return img;
+    }
+
+    public String getPoseName() {
+        return poseName;
     }
 
     public double getLeftArmAngle() {

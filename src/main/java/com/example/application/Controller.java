@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import com.example.application.errors.*;
+
 //@CrossOrigin
 @RestController
 @RequestMapping("test")
@@ -25,7 +27,7 @@ public class Controller {
             for (double d : dlist) {
                 s += String.valueOf(d);
             }
-            s += "----------------------------------------\n";
+            s += "----------------------------------------";
         }
         return s;
     }
@@ -57,19 +59,51 @@ public class Controller {
         String s = "";
         Pose pCurrent = PoseSet.getTreePose();
         CalculateAngles.setAngles();
+        boolean meets;
+        int count = 0;
         for (int i = 0; i < 10; i++) {
-            s += Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i]) + "\n";
+            meets = Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i]);
+            s += meets + "\n";
+
+            if (!meets) {
+                count++;
+            }
+        }
+        return s;
+    }
+
+    @GetMapping("/error_messages")
+    public String getErrorMessages() {
+        String s = "";
+        Pose pCurrent = PoseSet.getTreePose();
+        CalculateAngles.setAngles();
+
+        int count = 0;
+        for (int i = 0; i < 10; i++) {
+            if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) {
+                count++;
+            }
+        }
+
+        Errors es = new Errors(count);
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 1; j++) {
+                if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) {
+                    SingleError e = new SingleError(i, j, CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]);
+                    es.addError(i, e);
+                    s += e.getErrorMessage()+"----------------------------------------";
+                }
+            }
         }
         return s;
     }
 
     @PostMapping("/numeric_data")
     public double[][] receiveNumericData(@RequestBody List<List<Double>> data) { //void
-        System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        //System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println("Rows: "+data.size());
         System.out.println("Columns: "+data.get(0).size());
-
-//        this.arr = new Double[data.size()][data.get(0).size()];
 
         double x = 0.0;
         double y = 0.0;
@@ -77,8 +111,6 @@ public class Controller {
             for (int j = 0; j < 2; j++) {
                 if (j == 0) x = data.get(i).get(j);
                 if (j == 1) y = data.get(i).get(j);
-
-                //this.arr[i][j] = data.get(i).get(j);
             }
             CalculateAngles.setLandmarkPoints(i, x, y);
         }
