@@ -2,8 +2,10 @@ package com.example.application.poses;
 
 public class Pose {
 
+
     private String img;
     private String poseName;
+    private boolean isReversed;
     private double[] actualAngles = new double[10];
     private double[] thresholds = new double[10];
     private double lArmAngle;
@@ -19,21 +21,37 @@ public class Pose {
     private double rFootAngle;
 
     //order is: arm, shoulder, hip, leg, foot
-    public Pose(String img, String poseName, double lArmAngle, double rArmAngle, double lArmpitAngle, double rArmpitAngle,
+    public Pose(String img, String poseName, boolean isReversed, double lArmAngle, double rArmAngle, double lArmpitAngle, double rArmpitAngle,
                 double lHipAngle, double rHipAngle, double lLegAngle, double rLegAngle, double lFootAngle, double rFootAngle) {
-        this.img = img;
-        this.poseName = poseName;
 
-        this.lArmAngle = lArmAngle;
-        this.rArmAngle = rArmAngle;
-        this.lShoulderAngle = lArmpitAngle;
-        this.rShoulderAngle = rArmpitAngle;
-        this.lHipAngle = lHipAngle;
-        this.rHipAngle = rHipAngle;
-        this.lLegAngle = lLegAngle;
-        this.rLegAngle = rLegAngle;
-        this.lFootAngle = lFootAngle;
-        this.rFootAngle = rFootAngle;
+        this.poseName = poseName;
+        this.isReversed = isReversed;
+        if(!isReversed) {
+            this.img = img;
+            this.lArmAngle = lArmAngle;
+            this.rArmAngle = rArmAngle;
+            this.lShoulderAngle = lArmpitAngle;
+            this.rShoulderAngle = rArmpitAngle;
+            this.lHipAngle = lHipAngle;
+            this.rHipAngle = rHipAngle;
+            this.lLegAngle = lLegAngle;
+            this.rLegAngle = rLegAngle;
+            this.lFootAngle = lFootAngle;
+            this.rFootAngle = rFootAngle;
+        }
+        else{
+            this.img = img.substring(0,img.length()-4)+"Reversed.png";
+            this.lArmAngle = rArmAngle;
+            this.rArmAngle = lArmAngle;
+            this.lShoulderAngle = rArmpitAngle;
+            this.rShoulderAngle = lArmpitAngle;
+            this.lHipAngle = rHipAngle;
+            this.rHipAngle = lHipAngle;
+            this.lLegAngle = rLegAngle;
+            this.rLegAngle = lLegAngle;
+            this.lFootAngle = rFootAngle;
+            this.rFootAngle = lFootAngle;
+        }
 
         this.actualAngles[0] = rArmAngle;
         this.actualAngles[1] = lArmAngle;
@@ -84,6 +102,10 @@ public class Pose {
 
     public String getPoseName() {
         return poseName;
+    }
+
+    public boolean isReversed() {
+        return isReversed;
     }
 
     public double getLeftArmAngle() {

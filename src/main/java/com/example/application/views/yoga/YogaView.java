@@ -62,9 +62,11 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow.setJustifyContentMode(JustifyContentMode.CENTER);
 
         if(pose!=null){
-            //h2.setText(pose.);
+            h2.setText(pose.getPoseName());
         }
-        h2.setText("pose title");
+        else {
+            h2.setText("No Current Pose");
+        }
         layoutRow.setAlignSelf(FlexComponent.Alignment.CENTER, h2);
         h2.setWidth("max-content");
         layoutRow2.addClassName(Gap.MEDIUM);

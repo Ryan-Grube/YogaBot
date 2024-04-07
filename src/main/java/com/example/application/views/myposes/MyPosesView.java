@@ -61,19 +61,19 @@ public class MyPosesView extends Composite<VerticalLayout> {
         getContent().add(layoutRow2);
         getContent().add(layoutRow3);
 
-        makeClickableImage("Bridge","/images/bridgePose.png",PoseSet.getBridgePose(),layoutRow);
-        makeClickableImage("Cat","/images/catPose.png",PoseSet.getCatPose(),layoutRow);
-        makeClickableImage("Cow","/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
-        makeClickableImage("Child","/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
-        makeClickableImage("Cobra","/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
-        makeClickableImage("Camel","/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
-        makeClickableImage("Downward Dog","/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
-        makeClickableImage("Extended Side Angle","/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
+        makeClickableImage("/images/bridgePose.png",PoseSet.getBridgePose(),layoutRow);
+        makeClickableImage("/images/catPose.png",PoseSet.getCatPose(),layoutRow);
+        makeClickableImage("/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
+        makeClickableImage("/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
+        makeClickableImage("/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
+        makeClickableImage("/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
+        makeClickableImage("/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
+        makeClickableImage("/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
 
 
 
     }
-    public void makeClickableImage(String name, String img, Pose pose, @NotNull HorizontalLayout layout){
+    public void makeClickableImage(String img, Pose pose, @NotNull HorizontalLayout layout){
         VerticalLayout vert = new VerticalLayout();
         layout.add(vert);
         RouterLink link2 = new RouterLink("", YogaView.class);
@@ -90,7 +90,7 @@ public class MyPosesView extends Composite<VerticalLayout> {
 
         link2.add(myImage);
         vert.add(link2);
-        vert.add(name);
+        vert.add(pose.getPoseName());
         vert.setAlignItems(FlexComponent.Alignment.CENTER);
 
     }
