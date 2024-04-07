@@ -1,5 +1,6 @@
 package com.example.application.views.yoga;
 
+import com.example.application.poses.Pose;
 import com.example.application.views.MainLayout;
 import com.example.application.views.myposes.MyPosesView;
 import com.vaadin.flow.component.Composite;
@@ -25,8 +26,10 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 @Route(value = "my-Yoga", layout = MainLayout.class)
 @Uses(Icon.class)
 public class YogaView extends Composite<VerticalLayout> {
-
+    private static Pose pose;
     public YogaView() {
+
+
         HorizontalLayout layoutRow = new HorizontalLayout();
         H2 h2 = new H2();
         HorizontalLayout layoutRow2 = new HorizontalLayout();
@@ -34,16 +37,15 @@ public class YogaView extends Composite<VerticalLayout> {
         Paragraph textSmall = new Paragraph();
         VerticalLayout layoutColumn5 = new VerticalLayout();
         VerticalLayout layoutColumn3 = new VerticalLayout();// right col text?
-        Image cameraTest = new Image("/images/CameraTest.png","CameraTest");
-
+        Image cameraTest = new Image("/images/CameraTest.png", "CameraTest");
         VerticalLayout layoutColumn6 = new VerticalLayout();
+
+
         VerticalLayout layoutColumn4 = new VerticalLayout();
         Button buttonPrimary = new Button();
         HorizontalLayout layoutRow3 = new HorizontalLayout();
 
-        cameraTest.setWidth(layoutColumn5.getWidth());
-        cameraTest.setHeight(layoutColumn5.getHeight());
-        layoutColumn5.add(cameraTest);
+
         Button buttonPrimary2 = new Button();
         Button buttonPrimary3 = new Button();
         Button buttonPrimary4 = new Button();
@@ -68,8 +70,9 @@ public class YogaView extends Composite<VerticalLayout> {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
         textSmall.setWidth("100%");
         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
-        layoutColumn5.setWidth("474px");
-        layoutColumn5.setHeight("344px");
+        //layoutColumn5.setWidth("474px");
+        //layoutColumn5.setHeight("344px");
+
         layoutColumn3.setWidth("320px");
         layoutColumn3.setHeight("344px");
         layoutColumn6.setWidth("300px");
@@ -115,5 +118,28 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow3.add(buttonPrimary2);
         layoutRow3.add(buttonPrimary3);
         layoutRow3.add(buttonPrimary4);
+
+        layoutColumn5.setWidthFull();
+        layoutColumn5.setHeightFull();
+        layoutColumn3.setHeightFull();
+
+        cameraTest.setWidth(layoutColumn5.getWidth());
+        cameraTest.setHeight(layoutColumn5.getHeight());
+        layoutColumn5.add(cameraTest);
+        Image correctPoseImg;
+        if(pose == null){
+            correctPoseImg =  new Image("/images/yogaMan.png","Oh No");
+        }
+        else {
+            correctPoseImg = new Image(pose.getImg(),"Oh No");
+        }
+
+        layoutColumn6.add(correctPoseImg);
+
+
+
+    }
+    public static void setPose(Pose pose2){
+        pose = pose2;
     }
 }
