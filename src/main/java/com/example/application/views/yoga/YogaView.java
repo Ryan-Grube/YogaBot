@@ -12,6 +12,7 @@ import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexComponent.Alignment;
@@ -30,7 +31,7 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
     private static String toFix;
-    private static Paragraph message = new Paragraph("");
+    private static Span message = new Span("");
 
 
     public YogaView() {
@@ -82,11 +83,11 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutColumn2.setWidthFull();
         layoutColumn2.setHeight("500px");
         String msg = "";
-        if(Calculations.getEs()!=null){
-            for(int i =0; i<Calculations.getEs().getError().length; i++ ){
-                msg += Calculations.getEs().getError()[i].getErrorMessage();
-            }
-        }
+//        if(Calculations.getEs()!=null){
+//            for(int i =0; i<Calculations.getEs().getError().length; i++ ){
+//                msg += Calculations.getEs().getError()[i].getErrorMessage();
+//            }
+//        }
         message.setText(msg);
         message.setWidth("100%");
         message.getStyle().set("font-size", "var(--lumo-font-size-xs)");
