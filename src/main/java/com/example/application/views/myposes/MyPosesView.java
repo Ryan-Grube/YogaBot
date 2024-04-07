@@ -11,12 +11,18 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
+
+import java.awt.*;
 
 import static com.example.application.views.yoga.YogaView.setPose;
 
@@ -55,32 +61,37 @@ public class MyPosesView extends Composite<VerticalLayout> {
         getContent().add(layoutRow2);
         getContent().add(layoutRow3);
 
-        makeClickableImage("/images/bridgePose.png",PoseSet.getBridgePose(),layoutRow);
-        makeClickableImage("/images/catPose.png",PoseSet.getCatPose(),layoutRow);
-        makeClickableImage("/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
-        makeClickableImage("/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
-        makeClickableImage("/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
-        makeClickableImage("/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
-        makeClickableImage("/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
-        makeClickableImage("/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
+        makeClickableImage("Bridge","/images/bridgePose.png",PoseSet.getBridgePose(),layoutRow);
+        makeClickableImage("Cat","/images/catPose.png",PoseSet.getCatPose(),layoutRow);
+        makeClickableImage("Cow","/images/cowPose.png",PoseSet.getCowPose(),layoutRow);
+        makeClickableImage("Child","/images/childsPose.png",PoseSet.getChildsPose(),layoutRow);
+        makeClickableImage("Cobra","/images/cobraPose.png",PoseSet.getCobraPose(),layoutRow2);
+        makeClickableImage("Camel","/images/camelPose.png",PoseSet.getCamelPose(),layoutRow2);
+        makeClickableImage("Downward Dog","/images/downwardDog.png",PoseSet.getDownwardDog(),layoutRow3);
+        makeClickableImage("Extended Side Angle","/images/extendedSideAnglePose.png",PoseSet.getExtendedSideAnglePose(),layoutRow2);
 
 
 
     }
-    public void makeClickableImage(String img, Pose pose,HorizontalLayout layout){
+    public void makeClickableImage(String name, String img, Pose pose, @NotNull HorizontalLayout layout){
+        VerticalLayout vert = new VerticalLayout();
+        layout.add(vert);
         RouterLink link2 = new RouterLink("", YogaView.class);
         Image myImage = new Image(img,"image not working");
-        myImage.setHeight("150px");
-        myImage.setWidth("250px");
+        myImage.setHeight("110px");
+        myImage.setWidth("150px");
         myImage.addClickListener(event ->
                 {
                     link2.getElement().executeJs("this.click()");
                     setPose(pose);
                 }
         );
+        //TextField desc = new TextField(name);
 
         link2.add(myImage);
-        layout.add(link2);
+        vert.add(link2);
+        vert.add(name);
+        vert.setAlignItems(FlexComponent.Alignment.CENTER);
 
     }
 }

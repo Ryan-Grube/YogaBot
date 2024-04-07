@@ -1,6 +1,7 @@
 package com.example.application.views.yoga;
 
 import com.example.application.poses.Pose;
+import com.example.application.vcamera.VCamera;
 import com.example.application.views.MainLayout;
 import com.example.application.views.myposes.MyPosesView;
 import com.vaadin.flow.component.Composite;
@@ -125,7 +126,9 @@ public class YogaView extends Composite<VerticalLayout> {
 
         cameraTest.setWidth(layoutColumn5.getWidth());
         cameraTest.setHeight(layoutColumn5.getHeight());
-        layoutColumn5.add(cameraTest);
+        VCamera camera = new VCamera();
+        camera.openCamera();
+        layoutColumn5.add(camera);
         Image correctPoseImg;
         if(pose == null){
             correctPoseImg =  new Image("/images/yogaMan.png","Oh No");
