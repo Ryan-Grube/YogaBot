@@ -100,7 +100,7 @@ public class Controller {
     }
 
     @PostMapping("/numeric_data")
-    public double[][] receiveNumericData(@RequestBody List<List<Double>> data) { //void
+    public void receiveNumericData(@RequestBody List<List<Double>> data) { //void
         //System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println("Rows: "+data.size());
         System.out.println("Columns: "+data.get(0).size());
@@ -115,8 +115,9 @@ public class Controller {
             CalculateAngles.setLandmarkPoints(i, x, y);
         }
 
-        CalculateAngles.print();
+//        CalculateAngles.print();
 
-        return CalculateAngles.getLandmarkPoints();
+        Calculations.getErrorMessages();
+//        return CalculateAngles.getLandmarkPoints();
     }
 }

@@ -23,12 +23,12 @@ public class Calculations {
 //        }
 //    }
 
-    public static void getAngles() {
-        CalculateAngles.setAngles();
-        for (int i = 0; i < 10; i++) {
-            System.out.println(CalculateAngles.getAngles()[i]);
-        }
-    }
+//    public static void getAngles() {
+//        CalculateAngles.setAngles();
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(CalculateAngles.getAngles()[i]);
+//        }
+//    }
 
     public static void getAngleDifferences() {
         Pose pCurrent = YogaView.getPose();
@@ -38,27 +38,22 @@ public class Calculations {
         }
     }
 
-    public static void getMeetsThresholds() {
+    public static int getMeetsThresholds() {
         Pose pCurrent = YogaView.getPose();
         CalculateAngles.setAngles();
         boolean meets;
         int count = 0;
         for (int i = 0; i < 10; i++) {
-            meets = Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i]);
-            if (!meets) count++;
+            if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) count++;
         }
+        return count;
     }
 
     public static void getErrorMessages() {
         Pose pCurrent = YogaView.getPose();
         CalculateAngles.setAngles();
 
-        int count = 0;
-        for (int i = 0; i < 10; i++) {
-            if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) {
-                count++;
-            }
-        }
+        int count = getMeetsThresholds();
 
         es = new Errors(count);
 
@@ -67,7 +62,7 @@ public class Calculations {
                 if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) {
                     SingleError e = new SingleError(i, j, CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]);
                     es.addError(i, e);
-                    System.out.println(e.getErrorMessage());
+//                    System.out.println(e.getErrorMessage());
                 }
             }
         }
