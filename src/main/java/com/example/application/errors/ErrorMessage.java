@@ -37,11 +37,13 @@ public class ErrorMessage {
                 "bend your left arm less"}
             }
     };
-//    public ErrorMessage(int num, int param1, int param2) {
-//        error = errors[num][param1][param2];
+//   public ErrorMessage(int num, int param1, int param2)
+//       error = errors[num][param1][param2];
 //    }
 
     public static String[][][] getErrors() {
+
         return errors;
+
     }
 }

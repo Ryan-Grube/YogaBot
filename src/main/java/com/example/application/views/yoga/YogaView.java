@@ -6,6 +6,8 @@ import com.example.application.vcamera.VCamera;
 import com.example.application.views.MainLayout;
 import com.example.application.views.myposes.MyPosesView;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.Uses;
@@ -23,6 +25,7 @@ import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import org.atmosphere.interceptor.AtmosphereResourceStateRecovery;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Yoga")
@@ -31,7 +34,9 @@ import org.vaadin.lineawesome.LineAwesomeIcon;
 public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
     private static String toFix;
-    private static Span message = new Span("");
+//    private static Span message = new Span("");
+    private static Paragraph myText = new Paragraph("d");
+    private static String newText ="hi 12";
 
 
     public YogaView() {
@@ -88,9 +93,9 @@ public class YogaView extends Composite<VerticalLayout> {
 //                msg += Calculations.getEs().getError()[i].getErrorMessage();
 //            }
 //        }
-        message.setText(msg);
-        message.setWidth("100%");
-        message.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+//        message.setText(msg);
+//        message.setWidth("100%");
+//        message.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         //layoutColumn5.setWidth("474px");
         //layoutColumn5.setHeight("344px");
 
@@ -130,7 +135,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow.add(h2);
         getContent().add(layoutRow2);
         layoutRow2.add(layoutColumn2);
-        layoutColumn2.add(message);
+//        layoutColumn2.add(message);
 
 
         layoutRow2.add(layoutColumn5);
@@ -164,15 +169,15 @@ public class YogaView extends Composite<VerticalLayout> {
 
         layoutColumn6.add(correctPoseImg);
         buttonPrimary2.addClickListener(event-> {pose.reverse();
-                            getElement().executeJs("window.location.reload()");} );
-
-
+                            correctPoseImg.setSrc(pose.getImg());} );
+        layoutColumn2.add(myText);
+        myText.setText("working");
+        Button changeTexTest = new Button("change Text");
+        UI.getCurrent().getPage().executeJs("document.getElementById('#%s').innerText = '%s';",myText.getId().orElse(""),newText);
 
     }
 
-    public static void addToFix(String append){
-        toFix += append;
-    }
+
 
     public static void setPose(Pose pose2){
         pose = pose2;
@@ -180,8 +185,11 @@ public class YogaView extends Composite<VerticalLayout> {
     public static Pose getPose() {
         return pose;
     }
-    public static void setMessage(String msg){
-        message.setText(msg);
+//    public static void setMessage(String msg){
+//        message.setText(msg);
+//    }
+    public static void chageText(String str){
+        myText.setText(str);
     }
 }
 

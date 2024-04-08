@@ -62,8 +62,8 @@ public class Calculations {
                 if (!Comparison.meetsThreshold(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i], pCurrent.getThresholds()[i])) {
                     SingleError e = new SingleError(i, j, CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]);
                     es.addError(i, e);
-                    YogaView.setMessage(es.getError()[i].getErrorMessage());
-//                    System.out.println(e.getErrorMessage());
+                    System.out.println(e.getErrorMessage());
+                    YogaView.chageText(e.getErrorMessage());
                 }
             }
         }

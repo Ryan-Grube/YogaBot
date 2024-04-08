@@ -1,5 +1,9 @@
 package com.example.application.poses;
 
+import com.vaadin.flow.component.html.Image;
+
+import java.awt.*;
+
 public class Pose {
 
 
@@ -143,6 +147,7 @@ public class Pose {
         else{
             this.img = img.substring(0,img.length()-4)+" (1).png";
         }
+
         this.lArmAngle = rArmAngle;
         this.rArmAngle = lArmAngle;
         this.lShoulderAngle = rShoulderAngle;
