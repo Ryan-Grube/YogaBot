@@ -63,7 +63,7 @@ public class Calculations {
                     SingleError e = new SingleError(i, j, CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]);
                     es.addError(i, e);
                     System.out.println(e.getErrorMessage());
-                    YogaView.chageText(e.getErrorMessage());
+                    YogaView.changeText(e.getErrorMessage());
                 }
             }
         }

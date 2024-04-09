@@ -169,11 +169,11 @@ public class YogaView extends Composite<VerticalLayout> {
 
         layoutColumn6.add(correctPoseImg);
         buttonPrimary2.addClickListener(event-> {pose.reverse();
-                            correctPoseImg.setSrc(pose.getImg());} );
+                            correctPoseImg.setSrc(pose.getImg());
+                            changeText("hi");} );
         layoutColumn2.add(myText);
-        myText.setText("working");
         Button changeTexTest = new Button("change Text");
-        UI.getCurrent().getPage().executeJs("document.getElementById('#%s').innerText = '%s';",myText.getId().orElse(""),newText);
+
 
     }
 
@@ -188,7 +188,7 @@ public class YogaView extends Composite<VerticalLayout> {
 //    public static void setMessage(String msg){
 //        message.setText(msg);
 //    }
-    public static void chageText(String str){
+    public static void changeText(String str){
         myText.setText(str);
     }
 }
