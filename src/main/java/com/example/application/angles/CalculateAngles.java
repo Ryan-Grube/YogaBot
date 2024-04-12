@@ -13,11 +13,19 @@ public class CalculateAngles {
     }
 
     public static double[] getAngles() {
-        setAngles();
+        return getAngles(0);
+    }
+
+    public static double[] getAngles(int x) {
+        setAngles(x);
         return angles;
     }
 
     public static void setAngles() {
+        setAngles(0);
+    }
+
+    public static void setAngles(int x) {
 //        angles[0] = calculateRightArmAngle(0);
 //        angles[1] = calculateLeftArmAngle(0);
 //        angles[2] = calculateRightLegAngle(0);
@@ -29,16 +37,16 @@ public class CalculateAngles {
 //        angles[8] = calculateRightArmpitAngle(0);
 //        angles[9] = calculateLeftArmpitAngle(0);
 
-        angles[0] = calculateAngle(0, 11, 13, 15);
-        angles[1] = calculateAngle(0, 12, 14, 16);
-        angles[2] = calculateAngle(0, 23, 25, 27);
-        angles[3] = calculateAngle(0, 24, 26, 28);
-        angles[4] = calculateAngle(0, 27, 29, 31);
-        angles[5] = calculateAngle(0, 28, 30, 32);
-        angles[6] = calculateAngle(0, 11, 23, 25);
-        angles[7] = calculateAngle(0, 12, 24, 26);
-        angles[8] = calculateAngle(0, 13, 11, 23);
-        angles[9] = calculateAngle(0, 14, 12, 24);
+        angles[0] = calculateAngle(x, 11, 13, 15);
+        angles[1] = calculateAngle(x, 12, 14, 16);
+        angles[2] = calculateAngle(x, 23, 25, 27);
+        angles[3] = calculateAngle(x, 24, 26, 28);
+        angles[4] = calculateAngle(x, 27, 29, 31);
+        angles[5] = calculateAngle(x, 28, 30, 32);
+        angles[6] = calculateAngle(x, 11, 23, 25);
+        angles[7] = calculateAngle(x, 12, 24, 26);
+        angles[8] = calculateAngle(x, 13, 11, 23);
+        angles[9] = calculateAngle(x, 14, 12, 24);
     }
 
     public static void setLandmarkPoints(int index, double x, double y) {

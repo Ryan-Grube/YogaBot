@@ -101,9 +101,9 @@ public class Controller {
 
     @PostMapping("/numeric_data")
     public void receiveNumericData(@RequestBody List<List<Double>> data) { //void
-        //System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println("Rows: "+data.size());
-        System.out.println("Columns: "+data.get(0).size());
+//        System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println("Rows: "+data.size());
+//        System.out.println("Columns: "+data.get(0).size());
 
         double x = 0.0;
         double y = 0.0;
@@ -118,6 +118,8 @@ public class Controller {
 //        CalculateAngles.print();
 
         Calculations.getErrorMessages();
+
+        Calculations.getAngles();
 
 //        return CalculateAngles.getLandmarkPoints();
     }

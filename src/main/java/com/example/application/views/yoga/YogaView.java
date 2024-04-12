@@ -35,7 +35,7 @@ public class YogaView extends Composite<VerticalLayout> {
     private static Pose pose;
     private static String toFix;
 //    private static Span message = new Span("");
-    private static Paragraph myText = new Paragraph("d");
+    private static Paragraph myText = new Paragraph("Errors here");
     private static String newText ="hi 12";
 
 
@@ -179,8 +179,8 @@ public class YogaView extends Composite<VerticalLayout> {
 
 
 
-    public static void setPose(Pose pose2){
-        pose = pose2;
+    public static void setPose(Pose pose){
+        YogaView.pose = pose;
     }
     public static Pose getPose() {
         return pose;
