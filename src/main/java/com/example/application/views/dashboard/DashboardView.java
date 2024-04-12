@@ -44,4 +44,7 @@ public class DashboardView extends Composite<VerticalLayout> {
 
         vert1.setAlignItems(FlexComponent.Alignment.CENTER);
     }
+    public static void notify(String msg){
+        Notification.show(msg);
+    }
 }

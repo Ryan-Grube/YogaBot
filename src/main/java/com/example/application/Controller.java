@@ -118,6 +118,7 @@ public class Controller {
 //        CalculateAngles.print();
 
         Calculations.getErrorMessages();
+
 //        return CalculateAngles.getLandmarkPoints();
     }
 }
