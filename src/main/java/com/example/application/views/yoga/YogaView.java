@@ -1,5 +1,6 @@
 package com.example.application.views.yoga;
 
+import com.example.application.DynamicTextComponent;
 import com.example.application.poses.Pose;
 import com.example.application.vcamera.VCamera;
 import com.example.application.views.MainLayout;
@@ -21,6 +22,7 @@ import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import jakarta.servlet.Registration;
 import org.vaadin.lineawesome.LineAwesomeIcon;
 
 @PageTitle("Yoga")
@@ -37,6 +39,8 @@ public class YogaView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow2 = new HorizontalLayout();
         VerticalLayout layoutColumn2 = new VerticalLayout();//left text col
 
+//        DynamicTextComponent d = new DynamicTextComponent();
+//        layoutColumn2.add(d);
 
         Paragraph textSmall = new Paragraph();
         VerticalLayout layoutColumn5 = new VerticalLayout();
@@ -76,8 +80,7 @@ public class YogaView extends Composite<VerticalLayout> {
         layoutRow2.setFlexGrow(1.0, layoutColumn2);
         layoutColumn2.setWidthFull();
         layoutColumn2.setHeight("500px");
-        textSmall.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquna.");
+
         textSmall.setWidth("100%");
         textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
         //layoutColumn5.setWidth("474px");

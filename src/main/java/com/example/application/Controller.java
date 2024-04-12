@@ -35,11 +35,9 @@ public class Controller {
     @GetMapping("/angles")
     public String getAngles() {
         String s = "";
-        CalculateAngles.setAngles();
         for (int i = 0; i < 10; i++) {
             s += CalculateAngles.getAngles()[i] + "\n";
         }
-
         return s;
     }
 
@@ -47,7 +45,6 @@ public class Controller {
     public String getAngleDifferences() {
         String s = "";
         Pose pCurrent = PoseSet.getTreePose();
-        CalculateAngles.setAngles();
         for (int i = 0; i < 10; i++) {
             s += Comparison.compareAngles(CalculateAngles.getAngles()[i], pCurrent.getActualAngles()[i]) + "\n";
         }
@@ -58,7 +55,6 @@ public class Controller {
     public String getMeetsThresholds() {
         String s = "";
         Pose pCurrent = PoseSet.getTreePose();
-        CalculateAngles.setAngles();
         boolean meets;
         int count = 0;
         for (int i = 0; i < 10; i++) {
@@ -76,7 +72,6 @@ public class Controller {
     public String getErrorMessages() {
         String s = "";
         Pose pCurrent = PoseSet.getTreePose();
-        CalculateAngles.setAngles();
 
         int count = 0;
         for (int i = 0; i < 10; i++) {
@@ -101,9 +96,9 @@ public class Controller {
 
     @PostMapping("/numeric_data")
     public void receiveNumericData(@RequestBody List<List<Double>> data) { //void
-        //System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println("Rows: "+data.size());
-        System.out.println("Columns: "+data.get(0).size());
+//        System.out.println("Method called!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.println("Rows: "+data.size());
+//        System.out.println("Columns: "+data.get(0).size());
 
         double x = 0.0;
         double y = 0.0;
@@ -118,6 +113,8 @@ public class Controller {
 //        CalculateAngles.print();
 
         Calculations.getErrorMessages();
+
+        Calculations.getAngles();
 //        return CalculateAngles.getLandmarkPoints();
     }
 }
